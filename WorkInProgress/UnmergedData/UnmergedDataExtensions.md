@@ -186,6 +186,46 @@ _diffrn_radiation.xray_symbol
 ```
 Would we have to copy all potentially used imgCIF category/item definitions over as well (e.g. to make use of ``frame_id``)? Or include the full imgCIF dictionary as-is into the ``base`` directory of the [mmcif_pdbx](https://github.com/wwpdb-dictionaries/mmcif_pdbx) code? Ultimately, we probably want to avoid duplication and at the same time provide access to the full imgCIF categories and items.
 
+Most of these have identical descriptions - apart from:
+```
+_diffrn_detector.diffrn_id : additional text "The value of _diffrn.id uniquely defines a set of diffraction data."
+
+_diffrn_detector.dtime     : introduces plutal "detector(s)"
+
+_diffrn_measurement.device : additional text
+
+              If the value of _diffrn_measurement.device is not given,
+              it is implicitly equal to the value of
+              _diffrn_measurement.diffrn_id.
+
+              Either _diffrn_measurement.device or
+              _diffrn_measurement.id may be used to link to other
+              categories.  If the experimental setup admits multiple
+              devices, then _diffrn_measurement.id is used to provide
+              a unique link.
+
+_diffrn_radiation.filter_edge : transformed from "angstroms" to "\%angstr\"oms"
+
+_diffrn_radiation.polarisn_norm : typo in mmCIF version
+
+                                  "_diffrn_radiation_polarisn_ratio" should be
+                                  "_diffrn_radiation.polarisn_ratio"
+
+_diffrn_radiation.polarisn_ratio : different spelling "parallel-polarized" becomes "parallel polarized"
+
+_diffrn_radiation.probe : very different text
+
+ imgCIF:      The nature of the radiation used (i.e. the name of the
+              subatomic particle or the region of the electromagnetic
+              spectrum). It is strongly recommended that this information
+              is given, so that the probe radiation can be simply determined.
+
+ mmCIF:       Name of the type of radiation used. It is strongly
+              recommended that this be given so that the
+              probe radiation is clearly specified.
+
+```
+
 Some items are only defined in [base/mmcif_pdbx-base.dic](https://github.com/wwpdb-dictionaries/mmcif_pdbx/blob/master/base/mmcif_pdbx-base.dic) or [extensions/xfel-extensions-v3.dic](https://github.com/wwpdb-dictionaries/mmcif_pdbx/blob/master/extensions/xfel-extensions-v3.dic):
 ```
 _diffrn_detector.area_resol_mean
